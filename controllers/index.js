@@ -1,30 +1,30 @@
 const models = require("../database/models");
 
-const createUser = async (req, res) => {
+const createVideoGames = async (req, res) => {
   try {
-    const user = await models.User.create(req.body);
+    const videogames = await models.VideoGames.create(req.body);
     return res.status(201).json({
-      user
+      videogames
     });
   } catch (error) { 
     return res.status(500).json({ error: error.message });
   }
 };
 
-const getAllUsers = async (req, res) => {
-  console.log('getting users');
+const getAllVideoGames = async (req, res) => {
+  console.log('getting videogames');
   try {
-    const users = await models.User.findAll({
+    const videogames = await models.VideoGames.findAll({
       include: [
       ]
     });
-    return res.status(200).json({ users });
+    return res.status(200).json({ videogames });
   } catch (error) { 
     return res.status(500).send(error.message);
   }
 };
 
 module.exports = {
-  createUser,
-  getAllUsers
+  createVideoGames,
+  getAllVideoGames
 };
